@@ -203,7 +203,7 @@ def prepare_model_dataset(args):
         print(f'downloading model {model_path}')
         open(model_path, 'wb').write(r.content)
 
-    pretrained_model = torch.load(model_path)
+    pretrained_model = torch.load(model_path  weights_only=False)
     model.load_state_dict(pretrained_model['params'] if 'params' in pretrained_model.keys() else pretrained_model, strict=True)
 
     # download datasets
